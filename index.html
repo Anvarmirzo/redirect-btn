@@ -8,6 +8,22 @@
     <title>Redirect</title>
 </head>
 <body>
-<a href="https://my.click.uz/app/webView?url=https%3A%2F%2Fsubscription.click.uz/monitoring/&auth=true&hide_cross=true&show_header=true&mid=fa53d296-5585-4a68-b5c3-f3b5dc116ba3&name=%D0%90%D0%B2%D1%82%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D0%B5%D0%B6%D0%B8">Button</a>
+<a id="autoLink" href="https://my.click.uz/app/webView?url=https%3A%2F%2Fsubscription.click.uz/monitoring/&auth=true&hide_cross=true&show_header=true&mid=fa53d296-5585-4a68-b5c3-f3b5dc116ba3&name=%D0%90%D0%B2%D1%82%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D0%B5%D0%B6%D0%B8">Button</a>
+
+<script>
+    // Ждём загрузки DOM, затем пробуем кликнуть
+    document.addEventListener('DOMContentLoaded', function () {
+        const a = document.getElementById('autoLink');
+        if (!a) return;
+
+        // сначала попробуем вызвать .click() — триггерит обработчики и обычный переход
+        try {
+            a.click();
+        } catch (err) {
+            // на случай редких ошибок — делаем fallback через location
+            window.location.href = a.href;
+        }
+    });
+</script>
 </body>
 </html>
